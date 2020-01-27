@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="79.0" text="Busqueda" />
+      <ComboBox layoutX="14.0" layoutY="55.0" prefWidth="150.0" />
+      <ImageView fitHeight="100.0" fitWidth="112.0" layoutX="33.0" layoutY="100.0">
+         <image>
+            <Image url="@410909.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="19.0" layoutY="216.0" text="Nombre del documento" />
+      <TextArea layoutX="239.0" layoutY="50.0" prefHeight="154.0" prefWidth="294.0" />
+      <Label layoutX="239.0" layoutY="27.0" text="Informacion del estudiante" />
+      <Label layoutX="19.0" layoutY="257.0" text="Materias" />
+      <TableView layoutX="19.0" layoutY="282.0" prefHeight="100.0" prefWidth="105.0">
+        <columns>
+          <TableColumn prefWidth="128.00003051757812" text="Materia1" />
+          <TableColumn prefWidth="22.0" text="C2" />
+        </columns>
+      </TableView>
+      <TextArea layoutX="239.0" layoutY="257.0" prefHeight="126.0" prefWidth="294.0" />
+   </children>
+</AnchorPane>

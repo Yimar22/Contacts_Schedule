@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="21.0" layoutY="16.0" text="Resumen">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="71.0" text="Promedio de materias matriculadas" />
+      <Label layoutX="33.0" layoutY="99.0" text="Promedio por cerditos matriculados" />
+      <Label layoutX="33.0" layoutY="128.0" text="Materia mas matricualda" />
+      <Label layoutX="33.0" layoutY="157.0" text="Materia menos matricualda" />
+      <TableView layoutX="36.0" layoutY="258.0" prefHeight="128.0" prefWidth="329.0">
+        <columns>
+          <TableColumn prefWidth="165.0" text="Mateira menos matriculada" />
+            <TableColumn prefWidth="163.0" text="Materia mas matriculada" />
+        </columns>
+      </TableView>
+      <TextArea layoutX="274.0" layoutY="16.0" prefHeight="200.0" prefWidth="288.0" />
+      <ImageView fitHeight="92.0" fitWidth="102.0" layoutX="430.0" layoutY="260.0">
+         <image>
+            <Image url="@410909.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
