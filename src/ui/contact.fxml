@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ContactController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="407.0" layoutX="104.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,9 +20,9 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Button layoutX="545.0" layoutY="182.0" mnemonicParsing="false" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Editar" />
-      <TextArea disable="true" layoutX="322.0" layoutY="232.0" opacity="0.68" prefHeight="82.0" prefWidth="246.0" />
-      <ImageView fitHeight="125.0" fitWidth="129.0" layoutX="183.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+      <Button layoutX="545.0" layoutY="182.0" mnemonicParsing="false" onAction="#editContact" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Editar" />
+      <TextArea fx:id="notes" disable="true" layoutX="322.0" layoutY="219.0" opacity="0.68" prefHeight="82.0" prefWidth="246.0" />
+      <ImageView fx:id="picture" fitHeight="125.0" fitWidth="129.0" layoutX="183.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../documents/images/avatar-icon-vector-illustration.jpg" />
          </image>
@@ -32,12 +32,12 @@
             <Font name="Ebrima Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="395.0" layoutY="51.0" opacity="0.83" prefHeight="21.0" prefWidth="199.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text=" ">
+      <Label fx:id="telfnumero" layoutX="395.0" layoutY="51.0" opacity="0.83" prefHeight="21.0" prefWidth="199.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text=" ">
          <font>
             <Font name="Ebrima Bold" size="13.0" />
          </font>
       </Label>
-      <Button layoutX="325.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Agregar Nota">
+      <Button layoutX="325.0" layoutY="322.0" mnemonicParsing="false" onAction="#addNote" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Agregar Nota">
          <font>
             <Font size="10.0" />
          </font></Button>
@@ -46,8 +46,7 @@
             <Font name="Ebrima Bold" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="555.0" layoutY="359.0" mnemonicParsing="false" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="&gt;" />
-      <Button layoutX="511.0" layoutY="359.0" mnemonicParsing="false" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="&lt;" />
+      <Button layoutX="555.0" layoutY="359.0" mnemonicParsing="false" onAction="#next" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="&gt;" />
       <Label layoutX="262.0" layoutY="238.0" opacity="0.85" prefHeight="21.0" prefWidth="49.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text="Notas:">
          <font>
             <Font name="Ebrima Bold" size="13.0" />
@@ -68,17 +67,17 @@
             <Font name="Ebrima Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="412.0" layoutY="157.0" opacity="0.83" prefHeight="21.0" prefWidth="184.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text=" ">
+      <Label fx:id="fechadenacimiento" layoutX="412.0" layoutY="157.0" opacity="0.83" prefHeight="21.0" prefWidth="184.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text=" ">
          <font>
             <Font name="Ebrima Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="395.0" layoutY="87.0" opacity="0.83" prefHeight="21.0" prefWidth="199.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text=" ">
+      <Label fx:id="email" layoutX="395.0" layoutY="87.0" opacity="0.83" prefHeight="21.0" prefWidth="199.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text=" ">
          <font>
             <Font name="Ebrima Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="396.0" layoutY="123.0" opacity="0.83" prefHeight="21.0" prefWidth="199.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text=" ">
+      <Label fx:id="edad" layoutX="396.0" layoutY="123.0" opacity="0.83" prefHeight="21.0" prefWidth="199.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text=" ">
          <font>
             <Font name="Ebrima Bold" size="13.0" />
          </font>
@@ -93,7 +92,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="168.0" layoutY="364.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Añadir Contacto">
+      <Button layoutX="168.0" layoutY="364.0" mnemonicParsing="false" onAction="#addContact" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Añadir Contacto">
          <font>
             <Font size="10.0" />
          </font>
