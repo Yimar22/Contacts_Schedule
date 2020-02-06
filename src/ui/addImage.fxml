@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddImageController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Introduce the url in the text box and confirm it is your image " />
+      <TextField fx:id="urlTextField" layoutX="14.0" layoutY="40.0" prefHeight="25.0" prefWidth="550.0" />
+      <ImageView fx:id="imageViewer" fitHeight="204.0" fitWidth="196.0" layoutX="202.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="238.0" layoutY="101.0" text="Image you selected" />
+      <Button fx:id="applyButton" layoutX="470.0" layoutY="349.0" mnemonicParsing="false" onAction="#applyChanges" text="Apply" />
+      <Button fx:id="cancelButton" layoutX="534.0" layoutY="349.0" mnemonicParsing="false" onAction="#cancelOperation" text="Cancel" />
+   </children>
+</AnchorPane>
