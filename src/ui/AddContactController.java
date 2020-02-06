@@ -50,6 +50,7 @@ public class AddContactController {
     	//ask if it's a web or a local photo
     	Boolean defaultPhoto = true;
     	String path = "/Contacts_Schedule/documents/images/avatar-icon-vector-illustration.jpg";
+    	
     	Parent root = FXMLLoader.load(getClass().getResource("addImage.fxml"));
 		Scene scene = new Scene(root);
 		Stage appStage = new Stage();
@@ -82,6 +83,12 @@ public class AddContactController {
 		appStage.toFront();
 		appStage.show();
 		
+    }
+    
+    @FXML
+    void initialize() {
+    	
+    	
     }
 
 }

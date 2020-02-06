@@ -22,7 +22,7 @@ public class AddImageController {
 
     @FXML
     void applyChanges(ActionEvent event) {
-
+    	String url = urlTextField!=null?"/Contacts_Schedule/documents/images/avatar-icon-vector-illustration.jpg":urlTextField.getText();
     }
 
     @FXML
