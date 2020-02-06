@@ -16,7 +16,6 @@ import model.Contact;
 
 public class AddContactController {
 
-	private Contact contact;
 	
     @FXML
     private ResourceBundle resources;
@@ -26,13 +25,16 @@ public class AddContactController {
 
     @FXML
     private TextField name;
-
+	
+    @FXML
+	private TextField lastName;
+    
+    @FXML
+    private TextField phoneNumber;
+    
     @FXML
     private TextField email;
-
-    @FXML
-    private TextField lastName;
-
+   
     @FXML
     private TextField age;
 
@@ -40,15 +42,12 @@ public class AddContactController {
     private TextField birthDate;
 
     @FXML
-    private TextField phoneNumber;
-
-    @FXML
-    private ImageView photoPath;
+    private ImageView photo;
 
     @FXML
     void addPhoto(ActionEvent event) throws IOException {
     	//ask if it's a web or a local photo
-    	Boolean defaultPhoto = true;
+    	//Boolean defaultPhoto = true;
     	String path = "/Contacts_Schedule/documents/images/avatar-icon-vector-illustration.jpg";
     	
     	Parent root = FXMLLoader.load(getClass().getResource("addImage.fxml"));
@@ -58,17 +57,13 @@ public class AddContactController {
 		appStage.setTitle("Add Image");
 		appStage.toFront();
 		appStage.show();
-    	if(!defaultPhoto) {
-    		path = "";
-    	}
-    	photoPath = new ImageView(path);
+    	photo = new ImageView(path);
     }
 
     @FXML
     void save(ActionEvent event) throws IOException {
     	//Check if the contact is already added
-    	
-    	contact = new Contact(name.getText(), lastName.getText(), Integer.parseInt(age.getText()), email.getText(), Integer.parseInt(phoneNumber.getText()), birthDate.getText(), photoPath.getAccessibleText());
+    	 new Contact(name.getText(), lastName.getText(), Integer.parseInt(age.getText()), email.getText(), Integer.parseInt(phoneNumber.getText()), birthDate.getText(), photo.getAccessibleText());
     	
     	//Write the new row of contacts' file
     	//Confirm the new contact was added

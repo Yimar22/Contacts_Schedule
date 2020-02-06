@@ -4,30 +4,72 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BackgroundImage;
 
 public class AddImageController {
+	
+	public AddImageController() {
+		selectFromPC.setGraphic(new ImageView(new Image("//documents/")));
+	}
+	
+	private String url;
+	
+	// 1 for local; 0 for web
+	private int source;
+	
+    @FXML
+    private TextField imgSourcePath;
 
     @FXML
-    private TextField urlTextField;
+    private ImageView imgPreview;
 
     @FXML
-    private ImageView imageViewer;
+    private Button saveChangesButton;
 
     @FXML
-    private Button applyButton;
-
+    private Button cancelChangesButton;
+    
     @FXML
-    private Button cancelButton;
-
+    private Button reloadPreviewButton; 
+    
     @FXML
-    void applyChanges(ActionEvent event) {
-    	String url = urlTextField!=null?"/Contacts_Schedule/documents/images/avatar-icon-vector-illustration.jpg":urlTextField.getText();
+    private Button selectFromPC;
+    
+    @FXML
+    void saveChanges(ActionEvent event) {
+    	
     }
 
     @FXML
-    void cancelOperation(ActionEvent event) {
+    void cancelChanges(ActionEvent event) {
 
     }
+    
+    @FXML
+    void reloadPreview(ActionEvent event) {
+    	
+    }
+    
+    @FXML
+    void selectFromPc(ActionEvent event) {
+    	
+    }
+    
+	public int getSource() {
+		return source;
+	}
 
+	public void setSource(int source) {
+		this.source = source;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }
