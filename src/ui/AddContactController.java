@@ -1,10 +1,15 @@
 package ui;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Formatter;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,60 +27,73 @@ public class AddContactController {
 	private String imgURL;
 	
     @FXML
-    private TextField name;
+    private TextField nameTF;
 	
     @FXML
-	private TextField lastName;
+	private TextField lastNameTF;
     
     @FXML
-    private TextField phoneNumber;
+    private TextField phoneNumberTF;
     
     @FXML
-    private TextField email;
+    private TextField emailTF;
    
     @FXML
-    private TextField age;
+    private TextField ageTF;
 
     @FXML
-    private TextField birthDate;
+    private TextField birthDateTF;
 
     @FXML
-    private ImageView photo;
+    private ImageView photoIV;
 
     @FXML
     void addPhoto(ActionEvent event) throws MalformedURLException{
     	//ask if it's a web or a local photo
     	//Boolean defaultPhoto = true;
-    	Image img;
     	FileChooser fc = new FileChooser();
     	fc.setTitle("Choose an image");
     	String defaultDirectory = new File("").getAbsolutePath();
     	defaultDirectory+="\\documents\\images\\profileimgs";
     	fc.setInitialDirectory(new File(defaultDirectory));
-    	imgURL = (fc.showOpenDialog(photo.getScene().getWindow()).toURI().toURL().toExternalForm());
-    	photo.setImage(new Image(imgURL));
+    	imgURL = (fc.showOpenDialog(photoIV.getScene().getWindow()).toURI().toURL().toExternalForm());
+    	photoIV.setImage(new Image(imgURL));
     	String entries[] = imgURL.split("/");
     	imgURL = "Contacts_Schedule\\documents\\images\\profileimgs\\"+entries[entries.length-1];
     }
 
     @FXML
-    void save(ActionEvent event) throws IOException {
-    	//Check if the contact is already added
-    	BufferedWriter bw = new BufferedWriter(new FileWriter(new File("").getAbsolutePath()+"\\documents\\data\\contacts.txt"));
-    	bw.write(name.getText()+";"+lastName.getText()+";"+age.getText()+";"+ email.getText()+";"+ phoneNumber.getText()+";" +birthDate.getText()+";"+imgURL+"\n");
-    	//Write the new row of contacts' file
-    	//Confirm the new contact was added
-    	//Ask to the user wants to add another contact or not
-    	bw.close();
+    void save(ActionEvent event){    	
+    	// Data conversion
+    	String name = nameTF.getText();
+    	String lastName = lastNameTF.getText();
+    	int age = Integer.parseInt(ageTF.getText());
+    	String email = emailTF.getText();
+    	String phoneNumber = phoneNumberTF.getText();
+    	String birthDate = birthDateTF.getText();
     	
-    	Parent root = FXMLLoader.load(getClass().getResource("contact.fxml"));
+    	//Writer
+    	try {
+    		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("").getAbsolutePath()+"\\documents\\data\\contacts.txt",true));
+    		bw.append(name+";"+lastName+";"+age+";"+email+";"+phoneNumber+";"+birthDate+";"+imgURL);
+    		bw.close();
+    	}catch(IOException e){
+    		System.out.println("NoDatabase");
+    	}
+    	
+    	//Main Menu Loader
+    	Parent root = null;
+		try {
+			root = FXMLLoader.load(getClass().getResource("contact.fxml"));
+		} catch (IOException e) {
+			System.out.println("fxml file not founded");
+		}
 		Scene scene = new Scene(root);
 		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		appStage.setScene(scene);
 		appStage.setTitle("Add Contact");
 		appStage.toFront();
 		appStage.show();
-		
     }
     
     @FXML
