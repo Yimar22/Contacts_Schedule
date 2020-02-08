@@ -21,38 +21,38 @@
             <Font name="Ebrima Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="name" layoutX="104.0" layoutY="15.0" opacity="0.85" />
+      <TextField fx:id="nameTF" layoutX="104.0" layoutY="15.0" opacity="0.85" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="46.0" opacity="0.83" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text="Apellido">
          <font>
             <Font name="Ebrima Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="lastName" layoutX="104.0" layoutY="47.0" opacity="0.85" />
+      <TextField fx:id="lastNameTF" layoutX="104.0" layoutY="47.0" opacity="0.85" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="79.0" opacity="0.83" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text="Numero">
          <font>
             <Font name="Ebrima Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="phoneNumber" layoutX="104.0" layoutY="80.0" opacity="0.85" />
+      <TextField fx:id="phoneNumberTF" layoutX="104.0" layoutY="80.0" opacity="0.85" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="110.0" opacity="0.83" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text="Correo">
          <font>
             <Font name="Ebrima Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="email" layoutX="104.0" layoutY="111.0" opacity="0.85" />
+      <TextField fx:id="emailTF" layoutX="104.0" layoutY="111.0" opacity="0.85" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="142.0" opacity="0.83" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text="Edad">
          <font>
             <Font name="Ebrima Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="age" layoutX="104.0" layoutY="143.0" opacity="0.85" />
+      <TextField fx:id="ageTF" layoutX="104.0" layoutY="143.0" opacity="0.85" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="173.0" opacity="0.83" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #FF8648; -fx-border-color: lightgrey;" text="Fecha de nacimiento">
          <font>
             <Font name="Ebrima Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="birthDate" layoutX="167.0" layoutY="173.0" opacity="0.85" prefHeight="25.0" prefWidth="88.0" />
-      <ImageView fx:id="photo" fitHeight="127.0" fitWidth="140.0" layoutX="292.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="birthDateTF" layoutX="167.0" layoutY="173.0" opacity="0.85" prefHeight="25.0" prefWidth="88.0" />
+      <ImageView fx:id="photoIV" fitHeight="127.0" fitWidth="140.0" layoutX="292.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../documents/images/avatar-icon-vector-illustration.jpg" />
          </image></ImageView>
