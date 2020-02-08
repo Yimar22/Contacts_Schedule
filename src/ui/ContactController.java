@@ -160,7 +160,7 @@ public class ContactController {
 				contacts.put(newContact.getName(), newContact);
 				line = br.readLine();
 			}
-			System.out.println("Salio");
+			
 		} catch (FileNotFoundException e) {
 			
 			System.out.println("FileNotFoundException");
