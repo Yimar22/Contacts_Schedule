@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 sergio;cabrera;12;wefefeffewfe;124423424;efwfwgwgw;Contacts_Schedule\documents\images\profileimgs\sergioProfile.jpgyimar;tamayo;12;deefewfewf;1243245354|;efwwfewf;Contacts_Schedule\documents\images\profileimgs\yimarProfile.jpgwerrew;rewrwe;123;wrwe;werwrewr;asdadasd;Contacts_Schedule\documents\images\profileimgs\sergioProfile.jpgyimar;bobohijueputa;34;wdff;12346856;fdsjdskjfdskj;Contacts_Schedule\documents\images\profileimgs\yimarProfile.jpg
+=======
+Juan;Naranjo;19;Juannaranjo1206@gmail.com;3145608074;Junio/12/2000;null
+>>>>>>> ef11447291de496160f32d10f32050a4543f0f0e
