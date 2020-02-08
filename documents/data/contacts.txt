@@ -3,3 +3,4 @@ sergio;cabrera;12;wefefeffewfe;124423424;efwfwgwgw;Contacts_Schedule\documents\i
 =======
 Juan;Naranjo;19;Juannaranjo1206@gmail.com;3145608074;Junio/12/2000;null
 >>>>>>> ef11447291de496160f32d10f32050a4543f0f0e
+Juan Diego;Naranjo;19;jdnranjo1206@gmail.com;3145608074;Junio 12 2000;null
