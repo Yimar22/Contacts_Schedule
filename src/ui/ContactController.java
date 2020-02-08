@@ -1,8 +1,15 @@
 package ui;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +17,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.Contact;
 
 public class ContactController {
 
@@ -27,6 +39,9 @@ public class ContactController {
 
 	@FXML
 	private ImageView picture;
+	
+    @FXML
+    private Label name;
 
 	@FXML
 	private Label telfnumero;
@@ -39,6 +54,18 @@ public class ContactController {
 
 	@FXML
 	private Label edad;
+	
+	@FXML
+    private TableView<Contact> contactList;
+
+    @FXML
+    private TableColumn<Contact, String> nameColumn;
+
+    @FXML
+    private TableColumn<Contact, String> apellidoColumn;
+	
+	Hashtable<String,Contact> contacts = new Hashtable<String,Contact>();
+	ObservableList<Contact> data = FXCollections.observableArrayList();
 
 	@FXML
 	void addContact(ActionEvent event) throws IOException {
@@ -76,7 +103,73 @@ public class ContactController {
 
 	@FXML
 	void initialize() {
-		//Hashtable<String,Scene> scenes = new Hashtable<String,Scene>();
+		
+		readFile();
+		
+		nameColumn.setCellValueFactory(new PropertyValueFactory<Contact,String>("name"));
+		apellidoColumn.setCellValueFactory(new PropertyValueFactory<Contact,String>("lastName"));
+		
+		Enumeration<String> e = contacts.keys();
+		String clave;
+		Contact newContact;
+		while( e.hasMoreElements() ) {
+		    clave = e.nextElement();
+		    newContact = contacts.get( clave );
+		    data.add(newContact);
+		    
+		}
+		contactList.setItems(data);
+		
+		/*Contact selectedContact = contactList.getSelectionModel().selectedItemProperty().getValue();
+		name.setText(selectedContact.getName()+" "+selectedContact.getLastName());
+		telfnumero.setText(selectedContact.getPhoneNumber());
+		email.setText(selectedContact.getEmail());
+		edad.setText(""+selectedContact.getAge());
+		fechadenacimiento.setText(selectedContact.getBirthDate());*/
+	}
+	
+	@FXML
+    void selectRow(MouseEvent event) {
+		
+		Contact selectedContact = contactList.getSelectionModel().getSelectedItem();
+		
+		name.setText(selectedContact.getName()+" "+selectedContact.getLastName());
+		telfnumero.setText(selectedContact.getPhoneNumber());
+		email.setText(selectedContact.getEmail());
+		edad.setText(""+selectedContact.getAge());
+		fechadenacimiento.setText(selectedContact.getBirthDate());
+		
+    }
+	
+	void readFile() {
+		BufferedReader br;
+		
+		try {
+			
+			br = new BufferedReader(new FileReader("documents\\data\\MOCK_DATA.csv"));
+			br.readLine();
+			String line = br.readLine();
+			while (line!=null) {
+				
+				String [] fields = line.split(";");
+				Contact newContact = null;
+				
+				newContact = new Contact(fields[0], fields[1], Integer.parseInt(fields[2]),
+						fields[3], fields[4], fields[5], null);
+				
+				contacts.put(newContact.getName(), newContact);
+				line = br.readLine();
+			}
+			System.out.println("Salio");
+		} catch (FileNotFoundException e) {
+			
+			System.out.println("FileNotFoundException");
+			
+		}catch (IOException e) {
+			
+			System.out.println("IOException");
+			
+		}
 	}
 }
 

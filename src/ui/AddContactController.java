@@ -74,11 +74,15 @@ public class AddContactController {
     	
     	//Writer
     	try {
-    		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("").getAbsolutePath()+"\\documents\\data\\contacts.txt",true));
+    		/*BufferedWriter bw = new BufferedWriter(new FileWriter(new File("").getAbsolutePath()+"\\documents\\data\\contacts.txt",true));
     		bw.append(name+";"+lastName+";"+age+";"+email+";"+phoneNumber+";"+birthDate+";"+imgURL);
-    		bw.close();
+    		bw.close();*/
+    		FileWriter fsStream = new FileWriter("documents\\data\\MOCK_DATA.csv", true);
+    		BufferedWriter out = new BufferedWriter(fsStream);
+    		out.write(name+";"+lastName+";"+age+";"+email+";"+phoneNumber+";"+birthDate+";"+imgURL+"\n");
+    		out.close();
     	}catch(IOException e){
-    		System.out.println("NoDatabase");
+    		System.out.println("Error: "+e.getMessage());
     	}
     	
     	//Main Menu Loader
