@@ -1,12 +1,9 @@
 package ui;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;
-import java.util.Hashtable;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Contact;
+import model.Schedule;
 
 public class ContactController {
 
@@ -39,9 +37,9 @@ public class ContactController {
 
 	@FXML
 	private ImageView picture;
-	
-    @FXML
-    private Label name;
+
+	@FXML
+	private Label name;
 
 	@FXML
 	private Label telfnumero;
@@ -54,30 +52,35 @@ public class ContactController {
 
 	@FXML
 	private Label edad;
-	
+
 	@FXML
-    private TableView<Contact> contactList;
+	private TableView<Contact> contactList;
 
-    @FXML
-    private TableColumn<Contact, String> nameColumn;
+	@FXML
+	private TableColumn<Contact, String> nameColumn;
 
-    @FXML
-    private TableColumn<Contact, String> apellidoColumn;
+	@FXML
+	private TableColumn<Contact, String> apellidoColumn;
+
+	private Schedule schedule;
 	
-	Hashtable<String,Contact> contacts = new Hashtable<String,Contact>();
+
+
 	ObservableList<Contact> data = FXCollections.observableArrayList();
+
+
 
 	@FXML
 	void addContact(ActionEvent event) throws IOException {
 
-		    
-		    Parent root = FXMLLoader.load(getClass().getResource("addContact.fxml"));
-			Scene scene = new Scene(root);
-			Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			appStage.setScene(scene);
-			appStage.setTitle("Add Contact");
-			appStage.toFront();
-			appStage.show();
+
+		Parent root = FXMLLoader.load(getClass().getResource("addContact.fxml"));
+		Scene scene = new Scene(root);
+		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		appStage.setScene(scene);
+		appStage.setTitle("Add Contact");
+		appStage.toFront();
+		appStage.show();
 	}
 
 	@FXML
@@ -92,34 +95,37 @@ public class ContactController {
 
 	@FXML
 	void next(ActionEvent event) throws IOException {
-
+		
 		Parent root = FXMLLoader.load(getClass().getResource("courses.fxml"));
 		Scene scene = new Scene(root);
 		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		appStage.setScene(scene);
 		appStage.toFront();
 		appStage.show();
+		
 	}
 
 	@FXML
 	void initialize() {
+
+		schedule = new Schedule();
+		schedule.loadContacts();
 		
-		readFile();
-		
+
 		nameColumn.setCellValueFactory(new PropertyValueFactory<Contact,String>("name"));
 		apellidoColumn.setCellValueFactory(new PropertyValueFactory<Contact,String>("lastName"));
-		
-		Enumeration<String> e = contacts.keys();
+
+		Enumeration<String> e = schedule.getContacts().keys();
 		String clave;
 		Contact newContact;
 		while( e.hasMoreElements() ) {
-		    clave = e.nextElement();
-		    newContact = contacts.get( clave );
-		    data.add(newContact);
-		    
+			clave = e.nextElement();
+			newContact = schedule.getContacts().get( clave );
+			data.add(newContact);
+
 		}
 		contactList.setItems(data);
-		
+
 		/*Contact selectedContact = contactList.getSelectionModel().selectedItemProperty().getValue();
 		name.setText(selectedContact.getName()+" "+selectedContact.getLastName());
 		telfnumero.setText(selectedContact.getPhoneNumber());
@@ -127,10 +133,10 @@ public class ContactController {
 		edad.setText(""+selectedContact.getAge());
 		fechadenacimiento.setText(selectedContact.getBirthDate());*/
 	}
-	
+
 	@FXML
-    void selectRow(MouseEvent event) {
-		
+	void selectRow(MouseEvent event) {
+
 		Contact selectedContact = contactList.getSelectionModel().getSelectedItem();
 		
 		name.setText(selectedContact.getName()+" "+selectedContact.getLastName());
@@ -138,39 +144,10 @@ public class ContactController {
 		email.setText(selectedContact.getEmail());
 		edad.setText(""+selectedContact.getAge());
 		fechadenacimiento.setText(selectedContact.getBirthDate());
-		
-    }
-	
-	void readFile() {
-		BufferedReader br;
-		
-		try {
-			
-			br = new BufferedReader(new FileReader("documents\\data\\MOCK_DATA.csv"));
-			br.readLine();
-			String line = br.readLine();
-			while (line!=null) {
-				
-				String [] fields = line.split(";");
-				Contact newContact = null;
-				
-				newContact = new Contact(fields[0], fields[1], Integer.parseInt(fields[2]),
-						fields[3], fields[4], fields[5], null);
-				
-				contacts.put(newContact.getName(), newContact);
-				line = br.readLine();
-			}
-			
-		} catch (FileNotFoundException e) {
-			
-			System.out.println("FileNotFoundException");
-			
-		}catch (IOException e) {
-			
-			System.out.println("IOException");
-			
-		}
+
 	}
+
+
 }
 
 
