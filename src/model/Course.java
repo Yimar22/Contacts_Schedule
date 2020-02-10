@@ -1,6 +1,6 @@
 package model;
 
-public class Course implements Comparable<Course>{
+public class Course {
 
 	private String name;
 	private int credits; 
@@ -46,11 +46,7 @@ public class Course implements Comparable<Course>{
 	public void setStudentsAmount(int studentsAmount) {
 		this.studentsAmount = studentsAmount;
 	}
-	@Override
-	public Course compareTo(Course other) {
-		
-		return other;
-	}
+	
 	
 /*	@Override  
 	public  Course compareTo () {
