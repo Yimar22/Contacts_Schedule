@@ -155,17 +155,6 @@ public class ContactController {
 
 	}
 	
-	
-	 @FXML
-	 public void deleteContact(ActionEvent event) {
-		 
-		 Contact selectedContact = contactList.getSelectionModel().getSelectedItem();
-		 
-		 String delete = selectedContact.getName();
-		 
-		 schedule.getContacts().remove(delete);
-
-	 }
 
 
 }
