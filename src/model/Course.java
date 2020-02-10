@@ -1,6 +1,6 @@
 package model;
 
-public class Course {
+public class Course implements Comparable<Course>{
 
 	private String name;
 	private int credits; 
@@ -46,7 +46,25 @@ public class Course {
 	public void setStudentsAmount(int studentsAmount) {
 		this.studentsAmount = studentsAmount;
 	}
-
+	@Override
+	public Course compareTo(Course other) {
+		
+		return other;
+	}
 	
+/*	@Override  
+	public  Course compareTo () {
+	     int result = COMPARATOR.compare ( this , that);
+	    // opcional: es posible que desee incluir esta aserción (al menos durante el desarrollo)
+	     // tenga en cuenta que las aserciones están deshabilitadas de forma predeterminada
+	     si (resultado == 0 ) {
+	      afirme esto .equals (that): 
+	         this .getClass (). getSimpleName () + ": compareTo inconsistente con equals".
+	      ;
+	    }
+	    resultado de retorno ;
+	  }  
+
+	*/
 	
 }

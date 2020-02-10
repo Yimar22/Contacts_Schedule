@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Hashtable;
-import java.util.List;
 
 public class Schedule {
 
@@ -21,8 +20,8 @@ public class Schedule {
 		contacts = new Hashtable<String,Contact>();
 		courses = new Hashtable<String,Course>();;
 	}
-	
-	
+
+
 	public boolean deleteContact(String name) {
 
 		boolean deleted = false;
@@ -34,22 +33,26 @@ public class Schedule {
 
 		return deleted;
 	}
-	
-	public Course moreStudentsAmount() {
 
-		System.out.println(courses.values());
-		List<Course> list = new ArrayList<Course>(courses.values());
+	public Course courseMoreEnrrolled() {
 
+
+		//	System.out.println(courses.values());
+		ArrayList<Course> list = new ArrayList<Course>(courses.values());
+		//System.out.println(list);
 		Collections.sort(list, new Comparator<Course>() {
 
-			@Override
-			public int compare(Course o1, Course o2) {
 
-				if (o1.getStudentsAmount() > o2.getStudentsAmount()) {
+			@Override
+			public int compare(Course cc1, Course cc2) {
+
+				//	System.out.println(o1);
+
+				if (cc1.getStudentsAmount() > cc2.getStudentsAmount()) {
 
 					return 1;
 
-				}else if (o1.getStudentsAmount() < o2.getStudentsAmount()) {
+				}else if (cc1.getStudentsAmount() < cc2.getStudentsAmount()) {
 
 					return -1;
 
@@ -61,21 +64,25 @@ public class Schedule {
 		});
 		return list.get(0);
 	}
-	
-	public Course lessStudentsAmount() {
 
-		List<Course> list = new ArrayList<Course>(courses.values());
+	public Course courseLessEnrolled() {
+
+		//System.out.println(courses.values());
+
+		ArrayList<Course> list = new ArrayList<Course>(courses.values());
+		//System.out.println(list);
 
 		Collections.sort(list, new Comparator<Course>() {
+			//	System.out.println(o1);
 
 			@Override
-			public int compare(Course o1, Course o2) {
+			public int compare(Course cc1, Course cc2) {
 
-				if (o1.getStudentsAmount() > o2.getStudentsAmount()) {
+				if (cc1.getStudentsAmount() > cc2.getStudentsAmount()) {
 
 					return 1;
 
-				}else if (o1.getStudentsAmount() < o2.getStudentsAmount()) {
+				}else if (cc1.getStudentsAmount() < cc2.getStudentsAmount()) {
 
 					return -1;
 
@@ -87,6 +94,28 @@ public class Schedule {
 		});
 		return list.get(list.size()-1);
 	}
+
+	/*	public double contactAverage() {
+		int totalStudents = contacts.size();
+		double total = 0;
+		for (int i = 0; i < contacts.size(); i++) {
+			total += contacts.get(i).getCourses().size();
+		}
+		total = total / totalStudents;
+		return total;
+	}
+
+	public double creditsAverage() {
+		int totalStudents = contacts.size();
+		double total = 0;
+		for (int i = 0; i < contacts.size(); i++) {
+			Contact actualStudent = contacts.get(i);
+			for (int j = 0; j < actualStudent.getCourses().size(); j++) {
+				total += actualStudent.getCourses().get(j).getCredits();
+			}
+		}
+		return total / totalStudents;
+	}*/
 
 	public void loadContacts() {
 		BufferedReader br;
@@ -118,23 +147,23 @@ public class Schedule {
 
 		}
 	}
-	
+
 
 	public void loadCourses() {
 		BufferedReader br;
 
 		try {
-			
+
 			br = new BufferedReader(new FileReader("documents\\data\\ccoursess.csv"));
 			br.readLine();
 			String line = br.readLine();
-			
-		//	System.out.println(line);
+
+			//	System.out.println(line);
 			while (line!=null) {
 
 				String [] fields = line.split(";");
 				Course newCourse = null;
-			
+
 				newCourse = new Course(fields[0], Integer.parseInt(fields[1]),
 						fields[2], Integer.parseInt(fields[3]), Integer.parseInt(fields[4]));
 				courses.put(newCourse.getNRC()+"", newCourse);
@@ -151,7 +180,7 @@ public class Schedule {
 
 		}
 	}
-	
+
 	public Hashtable<String, Contact> getContacts() {
 		return contacts;
 	}
@@ -168,7 +197,7 @@ public class Schedule {
 		this.courses = courses;
 	}
 
-	
 
-	
+
+
 }

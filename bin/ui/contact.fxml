@@ -99,6 +99,5 @@
           <TableColumn fx:id="apellidoColumn" prefWidth="61.0" text="Apellido" />
         </columns>
       </TableView>
-      <Button layoutX="331.0" layoutY="187.0" mnemonicParsing="false" onAction="#deleteContact" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Eliminar" />
    </children>
 </AnchorPane>

@@ -35,5 +35,6 @@
             <TableColumn fx:id="nrcTC" prefWidth="84.0" text="NRC" />
         </columns>
       </TableView>
+      <Button layoutX="422.0" layoutY="35.0" mnemonicParsing="false" onAction="#removeCourse" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Eliminar Materia" />
    </children>
 </AnchorPane>

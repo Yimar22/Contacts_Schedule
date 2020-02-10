@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
-
-import javax.activation.MimeType;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -98,6 +95,13 @@ public class ContactController {
     	schedule.deleteContact(nname);
     	Contact selectedItem = contactList.getSelectionModel().getSelectedItem();
     	contactList.getItems().remove(selectedItem);
+    	name.setText("Nombre del estudiante");
+		telfnumero.setText("");
+		email.setText("");
+		edad.setText("");
+		fechadenacimiento.setText("");
+		picture.setImage(new Image("https://civileano.com/img/avatar.jpg"));
+	//	picture.setImage(new Image(selectedContact.getPhotoPath()));
     }
 
 	@FXML
@@ -154,18 +158,6 @@ public class ContactController {
 		picture.setImage(new Image(selectedContact.getPhotoPath()));
 
 	}
-	
-	
-	 @FXML
-	 public void deleteContact(ActionEvent event) {
-		 
-		 Contact selectedContact = contactList.getSelectionModel().getSelectedItem();
-		 
-		 String delete = selectedContact.getName();
-		 
-		 schedule.getContacts().remove(delete);
-
-	 }
 
 
 }

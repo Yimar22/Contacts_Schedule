@@ -21,7 +21,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.Contact;
 import model.Course;
 import model.Schedule;
 
@@ -82,6 +81,13 @@ public class coursesController {
 		appStage.show();
     }
 
+    
+    @FXML
+    void removeCourse(ActionEvent event) {
+    	Course selectedItem = coursesTV.getSelectionModel().getSelectedItem();
+    	coursesTV.getItems().remove(selectedItem);
+    }
+    
     @FXML
     void sortByCredtis(ActionEvent event) {
     //	creditsTC.sortableProperty();
