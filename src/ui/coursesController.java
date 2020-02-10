@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
+
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+import model.Contact;
 import model.Course;
 import model.Schedule;
 
@@ -44,7 +46,7 @@ public class coursesController {
     private TableColumn<Course, String> coursesTC;
     
     @FXML
-    private TableColumn<Course, Integer> creditsTC;
+    private TableColumn<Course, String> creditsTC;
     
     @FXML
     private TableColumn<Course, String> teacherNameTC;
@@ -82,12 +84,12 @@ public class coursesController {
 
     @FXML
     void sortByCredtis(ActionEvent event) {
-    	
+    //	creditsTC.sortableProperty();
     }
 
     @FXML
     void sortByNRC(ActionEvent event) {
-
+    	//nrcTC.setSortType(nrcTC.getSortType());
     }
 
     @FXML
@@ -104,12 +106,21 @@ public class coursesController {
     void initialize() {
     	
     	schedule = new Schedule();
+    	
 		schedule.loadCourses();
 		
-		coursesTC.setCellValueFactory(new PropertyValueFactory<Course,String>("Nombre"));
-		//creditsTC.setCellValueFactory(new PropertyValueFactory<Course,Integer>("Creditos"));
-		///teacherNameTC.setCellValueFactory(new PropertyValueFactory<Course,String>("Profesor"));
-		//nrcTC.setCellValueFactory(new PropertyValueFactory<Course,Integer>("NRC"));
+		//coursesTC.setCellValueFactory(new PropertyValueFactory<Course,String>("Curso"));
+		coursesTC.setCellValueFactory(c -> 
+	      new ReadOnlyStringWrapper( String.valueOf( c.getValue().getName() ) ));
+		
+		
+		creditsTC.setCellValueFactory(c -> 
+	      new ReadOnlyStringWrapper( String.valueOf( c.getValue().getCredits() ) ));
+		
+		teacherNameTC.setCellValueFactory(c -> 
+	      new ReadOnlyStringWrapper( String.valueOf( c.getValue().getTeacherName() ) ));
+		
+		nrcTC.setCellValueFactory(new PropertyValueFactory<Course,Integer>("NRC"));
 		
 		
 		Enumeration<String> e = schedule.getCourses().keys();
