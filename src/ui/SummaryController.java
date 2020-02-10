@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
+import model.Schedule;
 
 public class SummaryController {
 
@@ -35,6 +36,8 @@ public class SummaryController {
 
     @FXML
     private Label lbAvarageEnrolledCourse;
+    
+    private Schedule schedule;
 
     @FXML
     void back(ActionEvent event) throws IOException {
@@ -48,6 +51,12 @@ public class SummaryController {
 
     @FXML
     void initialize() {
-
+    	schedule = new Schedule();
+    	schedule.loadCourses();
+    	
+    	
+		
+    	lbMostEnrolledCourse.setText(schedule.moreStudentsAmount().getName());	
+    	bLessEnrolledCourse.setText(schedule.lessStudentsAmount().getName());
     }
 }
