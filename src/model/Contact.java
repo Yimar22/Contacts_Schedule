@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Hashtable;
+
 public class Contact {
 	private String name;
 	private String lastName;
@@ -9,6 +11,8 @@ public class Contact {
 	private String birthDate;
 	private String photoPath;
 	
+	Hashtable<String, Course> coursesEnrolled;
+	
 	public Contact(String name, String lastName, int age, String email, String phoneNumber, String birthDate, String photoPath) {
 		this.setName(name);
 		this.setLastName(lastName);
@@ -17,6 +21,7 @@ public class Contact {
 		this.setPhoneNumber(phoneNumber);
 		this.setBirthDate(birthDate);
 		this.setPhotoPath(photoPath);
+		coursesEnrolled = new Hashtable<String, Course>();
 	}
 
 	public String getName() {
@@ -73,6 +78,10 @@ public class Contact {
 
 	public void setPhotoPath(String photoPath) {
 		this.photoPath = photoPath;
+	}
+	
+	public Hashtable<String, Course> getCourseEnrolled() {
+		return coursesEnrolled;
 	}
 	
 	

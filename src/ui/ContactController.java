@@ -146,6 +146,18 @@ public class ContactController {
 		fechadenacimiento.setText(selectedContact.getBirthDate());
 
 	}
+	
+	
+	 @FXML
+	 public void deleteContact(ActionEvent event) {
+		 
+		 Contact selectedContact = contactList.getSelectionModel().getSelectedItem();
+		 
+		 String delete = selectedContact.getName();
+		 
+		 schedule.getContacts().remove(delete);
+
+	 }
 
 
 }
