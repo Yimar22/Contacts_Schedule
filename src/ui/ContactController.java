@@ -154,6 +154,18 @@ public class ContactController {
 		picture.setImage(new Image(selectedContact.getPhotoPath()));
 
 	}
+	
+	
+	 @FXML
+	 public void deleteContact(ActionEvent event) {
+		 
+		 Contact selectedContact = contactList.getSelectionModel().getSelectedItem();
+		 
+		 String delete = selectedContact.getName();
+		 
+		 schedule.getContacts().remove(delete);
+
+	 }
 
 
 }
